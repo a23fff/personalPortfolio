@@ -1,0 +1,35 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+
+{% block content %}
+<img src="{% static 'portfolio/tigresmontaje.png' %}" alt="tigresoficial" class="w-full h-auto">
+<div class="text-center my-12">  
+  <h1 class="text-3xl font-bold mb-12">Hi! My name is Fabián, and welcome to my <b>Tiger Portfolio</b></h1>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  {% for project in projects %}
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+      {% if project.url %}
+      <a href="{{ project.url }}">
+        <img src="{{ project.image.url }}" alt="{{ project.description }}" class="w-full h-full object-contain">
+      </a>
+      {% else %}
+      <img src="{{ project.image.url }}" alt="{{ project.description }}" class="w-full h-full object-contain">
+      {% endif %}
+    </div>
+    <div class="p-6">
+      <h2 class="text-xl font-bold mb-2">{{ project.title }}</h2>
+      <p class="text-gray-600 mb-4">{{ project.description }}</p>
+      {% if project.url %}
+      <a href="{{ project.url }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded">
+        More info...
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+

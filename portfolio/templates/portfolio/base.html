@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}My Portfolio{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{% static 'portfolio/Logo.png' %}">
+</head>
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
+  <nav class="bg-gray-800 text-white py-4 mt-auto">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <a href="{% url 'home' %}" class="flex items-center space-x-2">
+          <img src="{% static 'portfolio/Logo.png' %}" class="h-25 w-20" alt="Logo">        </a>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="https://www.instagram.com/" target="_blank" class="hover:text-gray-900">Instagram</a>
+          <a href="https://x.com/?lang=es" target="_blank" class="hover:text-gray-900">Twitter</a>
+          <a href="https://es.linkedin.com/" target="_blank" class="hover:text-gray-900">LinkedIn</a>
+          <a href="{% url 'blog:all_blogs' %}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Blog</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto px-4 flex-grow">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="bg-gray-800 text-white py-4 mt-auto">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Fabián's Portfolio. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

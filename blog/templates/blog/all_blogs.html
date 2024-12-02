@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
+  <header class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">My Projects - Fabián</h1>
+      <p class="text-gray-400 mt-2">Hi! My name is Fabián and here I'm sharing my projects and experiences :)</p>
+    </div>
+  </header>
+  
+  <main class="flex-grow container mx-auto my-8 px-4">
+    {% if blogs %}
+      {% for blog in blogs %}
+      <article class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+        <div class="p-6">
+          <div class="flex flex-col md:flex-row justify-between">
+            <div class="md:w-2/3">
+              <h2 class="text-xl font-bold mb-2">{{ blog.title }}</h2>
+              <p class="text-gray-500 mb-2">{{ blog.date|date:"F j, Y" }}</p>
+              <p class="text-gray-600 mb-4">{{ blog.description }}</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    {% else %}
+      <div class="text-center py-8">
+        <p class="text-gray-600">No blogs available yet.</p>
+      </div>
+    {% endif %}
+  </main>
+
+  <footer class="bg-gray-800 text-white py-4 mt-auto">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Fabián's Portfolio. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
